@@ -50,7 +50,7 @@ O projeto foi desenvolvido focando em **leveza e rapidez de carregamento** para 
 | Tecnologia | Uso |
 |------------|-----|
 | **HTML5** | Estrutura semântica da plataforma |
-| **CSS3** | Estilização responsiva e interface do "Semáforo de Status" |
+| **CSS3** | Estilização e interface do "Semáforo de Status" |
 | **JavaScript (Vanilla)** | Lógica do carrinho, manipulação do DOM e integração com a API do WhatsApp via URLs dinâmicas |
 
 > Nenhuma dependência externa. Zero frameworks. Máxima compatibilidade.
