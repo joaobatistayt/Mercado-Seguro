@@ -12,9 +12,46 @@ const cartBadge = document.getElementById('cart-badge');
 document.addEventListener('DOMContentLoaded', () => {
     atualizarCarrinho();
     configurarEventos();
+
+    const botoesAdd = document.querySelectorAll('.btn-add');
+    
+    botoesAdd.forEach(botao => {
+        botao.addEventListener('click', function() {
+            const card = this.closest('.card');
+            const id = parseInt(card.dataset.produto);
+            const nome = card.querySelector('h3').textContent;
+            const precoTexto = card.querySelector('.produto-preco').textContent;
+            const preco = parseFloat(precoTexto.replace('R$', '').replace(',', '.'));
+
+            const produto = {
+                id: id,
+                nome: nome,
+                preco: preco
+            };
+
+            adicionarAoCarrinho(produto);
+        });
+    });
 });
 
-
+function adicionarAoCarrinho(produto) {
+    const itemExistente = carrinho.find(item => item.id === produto.id);
+    
+    if (itemExistente) {
+        itemExistente.quantidade += 1;
+    } else {
+        carrinho.push({
+            id: produto.id,
+            nome: produto.nome,
+            preco: produto.preco,
+            quantidade: 1
+        });
+    }
+    
+    salvarCarrinho();
+    atualizarCarrinho();
+    mostrarNotificacao(`${produto.nome} adicionado ao carrinho!`);
+}
 
 function removerDoCarrinho(produtoId) {
     carrinho = carrinho.filter(item => item.id !== produtoId);
