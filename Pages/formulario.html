@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - Mercado Seguro</title>
+    <link rel="stylesheet" href="../CSS/index.css">
+    <link rel="stylesheet" href="../CSS/formulario.css">
+    <script src="https://kit.fontawesome.com/e1cda3af41.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="../Images/logo_azul.png" alt="Logo">
+                <h2 class="titulo">Mercado Seguro</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="catalogo.html">Produtos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-finalizar">
+        <div class="pagina-finalizar">
+            <div class="page-header">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h1>Finalizar Compra</h1>
+                <p>Preencha os dados para retirada segura</p>
+            </div>
+
+            <div class="finalizar-container">
+                <div class="formulario-coluna">
+                    <div class="formulario-card">
+                        <h2><i class="fa-regular fa-clock"></i> Agendamento</h2>
+                        
+                        <form id="form-finalizar">
+                            <div class="campo-form">
+                                <label for="nome">
+                                    <i class="fa-solid fa-user"></i> Seu nome
+                                </label>
+                                <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+                            </div>
+
+                            <div class="campo-form">
+                                <label for="horario">
+                                    <i class="fa-regular fa-calendar"></i> Horário de retirada
+                                </label>
+                                <input type="time" id="horario" required>
+                                <small>Funcionamento: 13h às 18h</small>
+                            </div>
+
+                            <div class="campo-form">
+                                <label for="veiculo">
+                                    <i class="fa-solid fa-motorcycle"></i> Descrição do veículo
+                                </label>
+                                <input type="text" id="veiculo" placeholder="Ex: Moto vermelha, Carro preto, A pé (camisa azul)" required>
+                                <small>Isso ajuda a Dona Maria a te identificar com segurança</small>
+                            </div>
+
+                            <div class="info-seguranca">
+                                <i class="fa-solid fa-lock"></i>
+                                <p>Seus dados são usados apenas para identificação na retirada</p>
+                            </div>
+
+                            <div class="botoes-form">
+                                <a href="catalogo.html" class="btn-secundario">
+                                    <i class="fa-solid fa-arrow-left"></i> Voltar
+                                </a>
+                                <button type="submit" class="btn-primario">
+                                    <i class="fa-brands fa-whatsapp"></i> Enviar Pedido
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="resumo-coluna">
+                    <div class="resumo-card">
+                        <h2><i class="fa-solid fa-bag-shopping"></i> Seu Pedido</h2>
+                        
+                        <div id="itens-resumo" class="itens-resumo">
+                        </div>
+                        
+                        <div class="total-resumo">
+                            <span>Total:</span>
+                            <strong id="total-valor">R$ 0,00</strong>
+                        </div>
+
+                        <div class="info-entrega">
+                            <i class="fa-solid fa-store"></i>
+                            <div>
+                                <p><strong>Retirada no local</strong></p>
+                                <p>Mercadinho da Dona Maria</p>
+                                <p class="endereco">Rua do Sítio, 123</p>
+                            </div>
+                        </div>
+
+                        <div class="status-resumo">
+                            <div class="status-item">
+                                <i class="fa-solid fa-circle-check" style="color: #22c55e;"></i>
+                                <span>Pedido separado pela Dona Maria</span>
+                            </div>
+                            <div class="status-item">
+                                <i class="fa-solid fa-circle-check" style="color: #22c55e;"></i>
+                                <span>Identificação pelo veículo</span>
+                            </div>
+                            <div class="status-item">
+                                <i class="fa-solid fa-circle-check" style="color: #22c55e;"></i>
+                                <span>Retirada na grade sem contato</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container-footer">
+            <p>&copy; 2026 Mercado Seguro. Todos os direitos reservados.</p>
+            <p class="footer-text">Compras inteligentes e seguras para você e sua família</p>
+        </div>
+    </footer>
+
+    <script src="../JS/formulario.js"></script>
+</body>
+</html>

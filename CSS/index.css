@@ -114,8 +114,8 @@ main{
 }
 
 .principal {
-  text-align: center;
-  padding: 64px 24px;
+    text-align: center;
+    padding: 64px 24px;
 
     & p {
         font-size: 1.125rem;
@@ -214,17 +214,6 @@ main{
     color: #6b7280;
     margin-bottom: 8px;
 }
-
-.status-buttons {
-    width: 530px;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 40px;
-    gap: 8px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
 
 .btn-aberto {
     background-color: #22c55e65;

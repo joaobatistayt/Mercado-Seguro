@@ -6,13 +6,19 @@ const statusDesc = statusContainer.querySelector('p');
 function verificarHorario() {
     const horaAtual = new Date();
     const horario = horaAtual.getHours();
+    const hoje = horaAtual.getDay(); // 0 = domingo a 6 = sábado
 
-    if (horario >= 7 && horario < 12) {
-        setStatus('aberto');
-    }else if (horario >= 13 && horario < 18) {
-        setStatus('grade');
-    }else {
+    if(hoje === 0) { // Verifica se é domingo
         setStatus('fechado');
+        return;
+    }else{
+        if (horario >= 7 && horario < 12) {
+            setStatus('aberto');
+        }else if (horario >= 13 && horario < 18) {
+            setStatus('grade');
+        }else {
+            setStatus('fechado');
+        }
     }
 }
 
