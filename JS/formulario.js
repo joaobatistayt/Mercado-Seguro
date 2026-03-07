@@ -1,46 +1,76 @@
-let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+document.addEventListener('DOMContentLoaded', () => {
+    const itensResumoContainer = document.getElementById('itens-resumo');
+    const totalValorElement = document.getElementById('total-valor');
+    const formFinalizar = document.getElementById('form-finalizar');
 
-const itensResumo = document.getElementById('itens-resumo');
-const totalValor = document.getElementById('total-valor');
-const form = document.getElementById('form-finalizar');
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
-if (carrinho.length === 0) {
-    window.location.href = 'catalogo.html';
-}
+    function renderizarResumo() {
+        if (carrinho.length === 0) {
+            itensResumoContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
+            return;
+        }
 
-function mostrarItens() {
-    itensResumo.innerHTML = '';
-    let total = 0;
+        itensResumoContainer.innerHTML = '';
+        let total = 0;
 
-    carrinho.forEach(item => {
-        total += item.preco * item.quantidade;
+        carrinho.forEach(item => {
+            const subtotal = item.preco * item.quantidade;
+            total += subtotal;
+
+            const divItem = document.createElement('div');
+            divItem.className = 'item-resumo-linha'; 
+            divItem.innerHTML = `
+                <span>${item.quantidade}x ${item.nome}</span>
+                <span>R$ ${subtotal.toFixed(2)}</span>
+            `;
+            itensResumoContainer.appendChild(divItem);
+        });
+
+        totalValorElement.textContent = `R$ ${total.toFixed(2)}`;
+    }
+
+    renderizarResumo();
+
+    formFinalizar.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const nome = document.getElementById('nome').value;
+        const horario = document.getElementById('horario').value;
+        const veiculo = document.getElementById('veiculo').value;
+
+        if (carrinho.length === 0) {
+            alert("Adicione itens ao carrinho antes de enviar!");
+            return;
+        }
+
+        let listaProdutos = "";
+        let totalFinal = 0;
+
+        carrinho.forEach(item => {
+            const subtotal = item.preco * item.quantidade;
+            totalFinal += subtotal;
+            listaProdutos += `• *${item.quantidade}x* ${item.nome}\n`;
+        });
+
+        const telefoneVendedora = "5583993960168";         
+        const mensagem = 
+`*NOVO PEDIDO - MERCADO SEGURO* 🛒
+
+*DADOS DO CLIENTE:*
+👤 *Nome:* ${nome}
+⏰ *Horário de Retirada:* ${horario}
+🚗 *Veículo/Descrição:* ${veiculo}
+
+*PRODUTOS:*
+${listaProdutos}
+
+_Aguardo confirmação da disponibilidade dos itens e valor final para realizar a retirada segura!_`;
+
+        const urlFinal = `https://api.whatsapp.com/send?phone=${telefoneVendedora}&text=${encodeURIComponent(mensagem)}`;
         
-        const div = document.createElement('div');
-        div.className = 'item-resumo';
-        div.innerHTML = `
-            <div class="item-resumo-info">
-                <div class="item-resumo-nome">${item.nome}</div>
-                <div class="item-resumo-qtd">Quantidade: ${item.quantidade}</div>
-            </div>
-            <div class="item-resumo-preco">R$ ${(item.preco * item.quantidade).toFixed(2)}</div>
-        `;
-        itensResumo.appendChild(div);
+        localStorage.removeItem('carrinho');
+        
+        window.open(urlFinal, '_blank');
     });
-
-    totalValor.textContent = `R$ ${total.toFixed(2)}`;
-}
-
-mostrarItens();
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const nome = document.getElementById('nome').value;
-    const horario = document.getElementById('horario').value;
-    const veiculo = document.getElementById('veiculo').value;
-   
-    alert('Pedido enviado!');
-    
-    localStorage.removeItem('carrinho');
-    window.location.href = 'catalogo.html';
 });
