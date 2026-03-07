@@ -7,6 +7,7 @@
     <title>Mercado Seguro</title>
     <link rel="stylesheet" href="/CSS/index.css">
     <script src="https://kit.fontawesome.com/e1cda3af41.js" crossorigin="anonymous"></script>
+    <script src="/JS/cart.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -21,7 +22,10 @@
                 <li><a href="#">Produtos</a></li>
             </ul>
             <div class="carrinho">
-              <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+              <button id="btn-carrinho" class="btn-carrinho-header">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-badge" class="cart-badge">0</span>
+              </button>
             </div>
         </nav>
       </div>
@@ -43,7 +47,6 @@
               <h1 id="status">Aberto</h1>
               <p>Loja aberta e operando normalmente</p>
             </div>
-              
           </div>
           <p class="status-text">Demo: Alterar Status</p>
           <div class="status-buttons">
@@ -52,40 +55,40 @@
             <button id="fechado">Fechado</button>
           </div>
         </div>
-          <div class="container-explicacao">
+
+        <div class="container-explicacao">
             <h2 class="titulo-sessao">Como Funciona</h2>
-          <div class="cards">
+            <div class="cards">
+                <div class="card">
+                  <div class="icone azul">
+                    <i class="fa-regular fa-clock"></i>
+                  </div>
+                  <h3>1. Verifique o Status</h3>
+                  <p>
+                    Consulte o semáforo de status em tempo real para saber se a loja está aberta, com atendimento pela grade ou fechada.
+                  </p>
+                </div>
 
-            <div class="card">
-              <div class="icone azul">
-                <i class="fa-regular fa-clock"></i>
-              </div>
-              <h3>1. Verifique o Status</h3>
-              <p>
-                Consulte o semáforo de status em tempo real para saber se a loja está aberta, com atendimento pela grade ou fechada.
-              </p>
-            </div>
+                <div class="card">
+                  <div class="icone verde">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                  </div>
+                  <h3>2. Compre com Segurança</h3>
+                  <p>
+                    Pegue suas compras no horário agendado, evitando filas e garantindo uma experiência mais segura e confortável.
+                  </p>
+                </div>
 
-            <div class="card">
-              <div class="icone verde">
-                <i class="fa-solid fa-bag-shopping"></i>
-              </div>
-              <h3>2. Compre com Segurança</h3>
-              <p>
-                Pegue suas compras no horário agendado, evitando filas e garantindo uma experiência mais segura e confortável.
-              </p>
+                <div class="card">
+                  <div class="icone roxo">
+                    <i class="fa-regular fa-calendar"></i>
+                  </div>
+                  <h3>3. Agende seu Horário</h3>
+                  <p>
+                    Escolha o melhor horário no nosso catálogo de agendamento e reserve sua visita com antecedência.
+                  </p>
+                </div>
             </div>
-
-            <div class="card">
-              <div class="icone roxo">
-                <i class="fa-regular fa-calendar"></i>
-              </div>
-              <h3>3. Agende seu Horário</h3>
-              <p>
-                Escolha o melhor horário no nosso catálogo de agendamento e reserve sua visita com antecedência.
-              </p>
-            </div>
-          </div>
         </div>
 
         <div class="container-motivos">
@@ -109,6 +112,33 @@
           </div>
         </div>
     </main>
+
+    <!-- Modal do Carrinho -->
+    <div id="modal-carrinho" class="modal-carrinho">
+      <div class="carrinho-sidebar">
+        <div class="carrinho-header">
+          <h2>Seu Carrinho</h2>
+          <button id="btn-fechar-carrinho" class="btn-fechar">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="carrinho-body">
+          <div id="carrinho-vazio" class="carrinho-vazio">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p>Seu carrinho está vazio</p>
+          </div>
+          <div id="carrinho-itens" class="carrinho-itens" style="display: none;">
+            <!-- Itens do carrinho serão adicionados aqui -->
+          </div>
+        </div>
+        <div class="carrinho-footer" id="carrinho-footer" style="display: none;">
+          <div class="carrinho-total">
+            <p>Total: <span id="total-preco">R$ 0,00</span></p>
+          </div>
+          <button class="btn-checkout">Finalizar Compra</button>
+        </div>
+      </div>
+    </div>
 
     <footer>
       <div class="container-footer">
