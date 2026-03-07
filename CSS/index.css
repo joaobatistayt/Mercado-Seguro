@@ -1,7 +1,14 @@
+body{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .header {
   background-color: white;
   border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  border-radius: 0 12px 12px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.05);
 
     & .container {
     max-width: 1280px;
@@ -14,7 +21,7 @@
     }
 
     & .titulo {
-        color: #1e3a8a;
+        color: #004080;
     }
 }
 
@@ -22,6 +29,11 @@
   display: flex;
   align-items: center;
   gap: 12px;
+
+  & img{
+    width: 40px;
+    height: 40px;
+  }
 }
 
 nav {
@@ -46,10 +58,10 @@ nav {
     }
 
     .carrinho {
-        & a {
-            display: inline-block;
+        & i {
+            font-size: 1.3rem;
             padding: 8px;
-            border-radius: 4px;
+            border-radius: 50%;
             background-color: #f3f4f6;
 
             &:hover {
@@ -132,8 +144,11 @@ main{
 
 .status-buttons {
     display: flex;
-    gap: 8px;
     justify-content: center;
+    padding-bottom: 40px;
+    gap: 8px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 
@@ -168,7 +183,7 @@ main{
 }
 
 .container-explicacao{
-  margin-bottom: 64px;
+    margin: 70px;
 }
 
 .titulo-sessao{
@@ -209,6 +224,7 @@ main{
 .icone{
   width: 64px;
   height: 64px;
+  font-size: 1.5rem;
   border-radius: 50%;
 
   display: flex;
@@ -219,13 +235,79 @@ main{
 }
 
 .azul{
-  background: #dbeafe;
+    background: #dbeafe;
+    color: #2563eb;
 }
 
 .verde{
-  background: #dcfce7;
+    background: #dcfce7;
+    color: #22c55e;
 }
 
 .roxo{
-  background: #f3e8ff;
+    background: #f3e8ff;
+    color: #7c3aed;
+}
+
+.container-motivos{
+    display: flex;
+    flex-direction: column;
+    margin-top: 64px;
+    text-align: center;
+    border-radius: 12px;
+    background-color: #144DEB;
+
+    & .titulo{
+        font-size: 1.8rem;
+        color: #ffffff;
+        margin-bottom: 48px;
+    }
+}
+
+.cards-motivos{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.card-motivos{
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+
+    & h4{
+        color: #ffffff;
+        margin-bottom: 12px;
+    }
+
+    & p{
+        color: #ffffff;
+    }
+
+    & .icone{
+        background-color: #2563eb;
+    }
+}
+
+ footer {
+    background-color: #111827;
+    color: #d1d5db;
+    padding: 32px 0;
+    margin-top: 64px;
+
+    & .container-footer {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+        text-align: center;
+
+        & p {
+            margin: 8px 0;
+        }
+
+        & .footer-text {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+    }
 }
