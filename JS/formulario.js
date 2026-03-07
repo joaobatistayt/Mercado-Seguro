@@ -1,5 +1,13 @@
 let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
+const hoje = new Date().toISOString().split('T')[0];
+const campoData = document.getElementById('data');
+
+if (campoData) {
+    campoData.min = hoje;
+    campoData.value = hoje;
+}
+
 const itensResumo = document.getElementById('itens-resumo');
 const totalValor = document.getElementById('total-valor');
 const form = document.getElementById('form-finalizar');
