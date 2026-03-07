@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,9 @@
     <link rel="stylesheet" href="../CSS/index.css">
     <link rel="stylesheet" href="../CSS/catalogo.css">
     <script src="https://kit.fontawesome.com/e1cda3af41.js" crossorigin="anonymous"></script>
+    <script src="../JS/cart.js" defer></script>
 </head>
+
 <body>
     <header class="header">
         <div class="container">
@@ -22,7 +25,10 @@
                     <li><a href="../Pages/catalogo.html">Produtos</a></li>
                 </ul>
                 <div class="carrinho">
-                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <button id="btn-carrinho" class="btn-carrinho-header">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cart-badge" class="cart-badge">0</span>
+                    </button>
                 </div>
             </nav>
         </div>
@@ -34,7 +40,7 @@
             <h1 class="titulo">Nosso Catálogo de Produtos</h1>
             <p>Confira nossos produtos e suas quantidades disponíveis</p>
         </div>
-        <div class="produtos-grid">
+        <div class="produtos-grid" data-produto="1">
             <div class="card">
                 <h3>Leite Integral</h3>
                 <p class="produto-descricao">Leite fresco 1L</p>
@@ -43,7 +49,7 @@
                 <button class="btn-add">Adicionar ao carrinho</button>
             </div>
 
-            <div class="card">
+            <div class="card" data-produto="2">
                 <h3>Bolacha Recheada</h3>
                 <p class="produto-descricao">Bolacha recheada de chocolate 100g</p>
                 <p class="produto-preco">R$ 2,50</p>
@@ -51,7 +57,7 @@
                 <button class="btn-add">Adicionar ao carrinho</button>
             </div>
 
-            <div class="card">
+            <div class="card" data-produto="3">
                 <h3>Queijo Mussarela</h3>
                 <p class="produto-descricao">Queijo mussarela fatiado 300g</p>
                 <p class="produto-preco">R$ 12,00</p>
@@ -59,7 +65,7 @@
                 <button class="btn-add">Adicionar ao carrinho</button>
             </div>
 
-            <div class="card">
+            <div class="card" data-produto="4">
                 <h3>Arroz Branco</h3>
                 <p class="produto-descricao">Arroz branco 1kg</p>
                 <p class="produto-preco">R$ 5,90</p>
@@ -67,7 +73,7 @@
                 <button class="btn-add">Adicionar ao carrinho</button>
             </div>
 
-            <div class="card">
+            <div class="card" data-produto="5">
                 <h3>Feijão Carioca</h3>
                 <p class="produto-descricao">Feijão carioca 1kg</p>
                 <p class="produto-preco">R$ 7,80</p>
@@ -75,7 +81,7 @@
                 <button class="btn-add">Adicionar ao carrinho</button>
             </div>
 
-            <div class="card">
+            <div class="card" data-produto="6">
                 <h3>Refrigerante Cola</h3>
                 <p class="produto-descricao">Garrafa de 2L</p>
                 <p class="produto-preco">R$ 10,50</p>
@@ -83,7 +89,7 @@
                 <button class="btn-add">Adicionar ao carrinho</button>
             </div>
 
-            <div class="card">
+            <div class="card" data-produto="7">
                 <h3>Ovos</h3>
                 <p class="produto-descricao">Dúzia de ovos</p>
                 <p class="produto-preco">R$ 10,90</p>
@@ -91,7 +97,7 @@
                 <button class="btn-add">Adicionar ao carrinho</button>
             </div>
 
-            <div class="card">
+            <div class="card" data-produto="8">
                 <h3>Banana Prata</h3>
                 <p class="produto-descricao">Banana fresca (kg)</p>
                 <p class="produto-preco">R$ 5,90</p>
@@ -99,7 +105,7 @@
                 <button class="btn-add">Adicionar ao carrinho</button>
             </div>
 
-            <div class="card">
+            <div class="card" data-produto="9">
                 <h3>Macarrão Instantâneo</h3>
                 <p class="produto-descricao">Macarrão instantâneo 80g</p>
                 <p class="produto-preco">R$ 2,00</p>
@@ -107,7 +113,7 @@
                 <button class="btn-add">Adicionar ao carrinho</button>
             </div>
 
-            <div class="card">
+            <div class="card" data-produto="10">
                 <h3>Manteiga</h3>
                 <p class="produto-descricao">Manteiga com sal 200g</p>
                 <p class="produto-preco">R$ 9,20</p>
@@ -117,11 +123,37 @@
         </div>
     </main>
 
-    <footer>
-      <div class="container-footer">
-        <p>&copy; 2026 Mercado Seguro. Todos os direitos reservados.</p>
-        <p class="footer-text">Compras inteligentes e seguras para você e sua família</p>
+    <div id="modal-carrinho" class="modal-carrinho">
+      <div class="carrinho-sidebar">
+        <div class="carrinho-header">
+          <h2>Seu Carrinho</h2>
+          <button id="btn-fechar-carrinho" class="btn-fechar">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="carrinho-body">
+          <div id="carrinho-vazio" class="carrinho-vazio">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p>Seu carrinho está vazio</p>
+          </div>
+          <div id="carrinho-itens" class="carrinho-itens" style="display: none;">
+          </div>
+        </div>
+        <div class="carrinho-footer" id="carrinho-footer" style="display: none;">
+          <div class="carrinho-total">
+            <p>Total: <span id="total-preco">R$ 0,00</span></p>
+          </div>
+          <button class="btn-checkout">Finalizar Compra</button>
+        </div>
       </div>
+    </div>
+
+    <footer>
+        <div class="container-footer">
+            <p>&copy; 2026 Mercado Seguro. Todos os direitos reservados.</p>
+            <p class="footer-text">Compras inteligentes e seguras para você e sua família</p>
+        </div>
     </footer>
 </body>
+
 </html>
