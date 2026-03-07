@@ -174,13 +174,9 @@ function configurarEventos() {
 
 
     document.querySelector('.btn-checkout').addEventListener('click', () => {
-        if (carrinho.length > 0) {
-            alert(`Compra finalizada! Total: R$ ${calcularTotal()}`);
-            carrinho = [];
-            salvarCarrinho();
-            atualizarCarrinho();
-            modalCarrinho.classList.remove('ativo');
-        }
+    if (carrinho.length > 0) {
+        window.location.href = 'formulario.html';
+    }
     });
 }
 
