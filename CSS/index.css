@@ -114,8 +114,8 @@ main{
 }
 
 .principal {
-  text-align: center;
-  padding: 64px 24px;
+    text-align: center;
+    padding: 64px 24px;
 
     & p {
         font-size: 1.125rem;
@@ -215,21 +215,9 @@ main{
     margin-bottom: 8px;
 }
 
-.status-buttons {
-    width: 530px;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 40px;
-    gap: 8px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-
 .btn-aberto {
     background-color: #22c55e65;
     padding: 8px 16px;
-    color: white;
     border: 2px solid #22c55e;
     border-radius: 8px;
     cursor: pointer;
@@ -237,23 +225,33 @@ main{
 }
 
 .btn-grade {
-    background-color: #eab20866;
+    background-color: #e3ea0866;
     padding: 8px 16px;
-    color: white;
-    border: 2px solid #eab308;
+    border: 2px solid #dfea08;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s;
+
+    & h1, p{
+        color: #A65F00;
+    }
+
+    & i{
+        color: #eebc28;
+    }
 }
 
 .btn-fechado {
     background-color: #ef444463;
     padding: 8px 16px;
-    color: white;
     border: 2px solid #ef4444;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s;
+
+    & h1, p, i{
+        color: #b91c1c;
+    }
 }
 
 .container-explicacao{
