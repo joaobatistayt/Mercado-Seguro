@@ -28,19 +28,19 @@ function setStatus(status) {
             statusContainer.className = 'container-status btn-aberto';
 			statusIcone.className = 'fa-solid fa-circle-check';
 			statusTitulo.textContent = 'Aberto';
-			statusDesc.textContent = 'Loja aberta e operando normalmente';
+			statusDesc.textContent = 'Loja aberta para compras presenciais ou para agendar a retirada nos horários de atendimento pela grade.';
 			break;
 		case 'grade':
             statusContainer.className = 'container-status btn-grade';
 			statusIcone.className = 'fa-solid fa-circle-exclamation';
 			statusTitulo.textContent = 'Grade';
-			statusDesc.textContent = 'Atendimento pela grade, sem acesso ao interior da loja';
+			statusDesc.textContent = 'Venda restrita à grade; agende sua retirada para este momento ou para outro horário.';
 			break;
 		case 'fechado':
             statusContainer.className = 'container-status btn-fechado';
 			statusIcone.className = 'fa-solid fa-circle-xmark';
 			statusTitulo.textContent = 'Fechado';
-			statusDesc.textContent = 'Loja fechada no momento';
+			statusDesc.textContent = 'Loja fechada agora; organize sua lista e agende a retirada para quando o atendimento na grade retornar.';
 			break;
 	}
 }
