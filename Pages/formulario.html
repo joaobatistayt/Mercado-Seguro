@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="../CSS/formulario.css">
     <script src="https://kit.fontawesome.com/e1cda3af41.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header class="header">
         <div class="container">
@@ -36,7 +38,7 @@
                 <div class="formulario-coluna">
                     <div class="formulario-card">
                         <h2><i class="fa-regular fa-clock"></i> Agendamento</h2>
-                        
+
                         <form id="form-finalizar">
                             <div class="campo-form">
                                 <label for="nome">
@@ -46,18 +48,27 @@
                             </div>
 
                             <div class="campo-form">
+                                <label for="data">
+                                    <i class="fa-regular fa-calendar"></i> Data de retirada
+                                </label>
+                                <input type="date" id="data" required>
+                                <small>Selecione a data desejada</small>
+                            </div>
+
+                            <div class="campo-form">
                                 <label for="horario">
                                     <i class="fa-regular fa-calendar"></i> Horário de retirada
                                 </label>
                                 <input type="time" id="horario" required>
-                                <small>Funcionamento: 13h às 18h</small>
+                                <small>Funcionamento pela grade: 13h às 18h</small>
                             </div>
 
                             <div class="campo-form">
                                 <label for="veiculo">
                                     <i class="fa-solid fa-motorcycle"></i> Descrição do veículo
                                 </label>
-                                <input type="text" id="veiculo" placeholder="Ex: Moto vermelha, Carro preto, A pé (camisa azul)" required>
+                                <input type="text" id="veiculo"
+                                    placeholder="Ex: Moto vermelha, Carro preto, A pé (camisa azul)" required>
                                 <small>Isso ajuda a Dona Maria a te identificar com segurança</small>
                             </div>
 
@@ -81,10 +92,10 @@
                 <div class="resumo-coluna">
                     <div class="resumo-card">
                         <h2><i class="fa-solid fa-bag-shopping"></i> Seu Pedido</h2>
-                        
+
                         <div id="itens-resumo" class="itens-resumo">
                         </div>
-                        
+
                         <div class="total-resumo">
                             <span>Total:</span>
                             <strong id="total-valor">R$ 0,00</strong>
@@ -94,8 +105,8 @@
                             <i class="fa-solid fa-store"></i>
                             <div>
                                 <p><strong>Retirada no local</strong></p>
-                                <p>Mercadinho da Dona Maria</p>
-                                <p class="endereco">Rua do Sítio, 123</p>
+                                <p>Mercadinho Jerimum da Dona Maria</p>
+                                <p class="endereco">Sítio Jerimum, Zona Rural, São João do Rio do Peixe - PB</p>
                             </div>
                         </div>
 
@@ -110,7 +121,7 @@
                             </div>
                             <div class="status-item">
                                 <i class="fa-solid fa-circle-check" style="color: #22c55e;"></i>
-                                <span>Retirada na grade sem contato</span>
+                                <span>Retirada na grade</span>
                             </div>
                         </div>
                     </div>
@@ -128,4 +139,5 @@
 
     <script src="../JS/formulario.js"></script>
 </body>
+
 </html>

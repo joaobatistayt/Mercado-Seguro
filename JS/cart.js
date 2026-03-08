@@ -8,10 +8,15 @@ const carrinhoVazio = document.getElementById('carrinho-vazio');
 const carrinhoFooter = document.getElementById('carrinho-footer');
 const totalPreco = document.getElementById('total-preco');
 const cartBadge = document.getElementById('cart-badge');
+const alertaCarrinho = document.querySelector('.alerta');
 
 document.addEventListener('DOMContentLoaded', () => {
     atualizarCarrinho();
     configurarEventos();
+    // Verifica o carrinho apenas na página de início
+    if (window.location.pathname.endsWith('index.html')) {
+        verificarCarrinho();
+    }
 
     const botoesAdd = document.querySelectorAll('.btn-add');
     
@@ -193,4 +198,31 @@ function mostrarNotificacao(mensagem) {
     setTimeout(() => {
         notificacao.remove();
     }, 2000);
+}
+function verificarCarrinho() {
+    const carrinhoSalvo = JSON.parse(localStorage.getItem('carrinho')) || [];
+    const corpoPagina = document.querySelector('main');
+
+    if (carrinhoSalvo.length > 0 && alertaCarrinho) {
+        alertaCarrinho.style.display = 'flex';
+        corpoPagina.classList.add('blurred');
+
+        const btnManter = document.getElementById('Manter');
+        if (btnManter) {
+            btnManter.onclick = function() {
+                window.location.href = 'catalogo.html';
+            };
+        }
+
+        const btnLimpar = document.getElementById('Limpar');
+        if (btnLimpar) {
+            btnLimpar.onclick = function() {
+                localStorage.removeItem('carrinho');
+                carrinho = [];
+                alertaCarrinho.style.display = 'none';
+                corpoPagina.classList.remove('blurred');
+                location.reload();
+            };
+        }
+    }
 }
