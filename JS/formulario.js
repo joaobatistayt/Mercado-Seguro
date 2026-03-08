@@ -60,6 +60,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const dataSelecionada = new Date(dataSelecionadaRaw + "T00:00:00");
+        const diaSemana = dataSelecionada.getDay();
+        
+        if (diaSemana === 0) {
+            alert("Não é possível agendar para domingo. Por favor, escolha outro dia.");
+            return;
+        }
+
         const agora = new Date();
         const dataHojeFormatada = agora.toISOString().split('T')[0];
 
